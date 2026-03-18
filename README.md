@@ -132,9 +132,8 @@ Run the following on **each** of the 3 instances.
 
 ### 2.1 — SSH into the node
 
-```sh
-ssh -i ~/.ssh/$KEY_NAME.pem ubuntu@<public-ip>
-```
+chmod 400 assign2.pem
+ssh -i asign2.pem ubuntu@44.221.214.18
 
 ### 2.2 — Set the hostname (run separately on each node)
 
