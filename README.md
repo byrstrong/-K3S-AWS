@@ -188,11 +188,11 @@ sudo mkdir -p /etc/rancher/k3s
 # Replace 1.2.3.4  with the public IP / Elastic IP of k3s-master-1
 sudo tee /etc/rancher/k3s/config.yaml <<EOF
 cluster-init: true
-node-ip: 10.0.1.10
-advertise-address: 10.0.1.10
+node-ip: 172.31.44.176
+advertise-address: 172.31.44.176
 tls-san:
-  - 10.0.1.10
-  - 1.2.3.4
+  - 172.31.44.176
+  - 44.221.214.18
   - k3s-master-1
 disable: [servicelb, traefik]
 EOF
