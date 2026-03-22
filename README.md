@@ -120,9 +120,9 @@ Record the values — you will need them throughout this guide:
 
 | Hostname | Private IP | Public IP |
 |----------|------------|-----------|
-| k3s-master-1 | 44.221.214.18| 172.31.44.176 |
-| k3s-master-2 | 54.160.255.83| 172.31.33.155 |
-| k3s-master-3 | 54.244.83.89 | 172.31.38.180 |
+| k3s-master-1 | 172.31.82.126| 3.91.141.32 |
+| k3s-master-2 |172.31.83.72| 3.228.125.33 |
+| k3s-master-3 | 172.31.81.32 | 3.226.165.243 |
 
 ---
 
@@ -133,7 +133,7 @@ Run the following on **each** of the 3 instances.
 ### 2.1 — SSH into the node
 
 chmod 400 assign2.pem
-ssh -i asign2.pem ubuntu@44.221.214.18
+ssh -i asign2.pem ubuntu@3.91.141.32
 
 ### 2.2 — Set the hostname (run separately on each node)
 
@@ -161,9 +161,9 @@ Add an entry for each node so they can resolve each other by hostname. Replace t
 
 ```sh
 sudo tee -a /etc/hosts <<EOF
-44.221.214.18  k3s-master-1
-54.160.255.83  k3s-master-2
-54.224.83.89  k3s-master-3
+172.31.82.126  k3s-master-1
+172.31.83.72  k3s-master-2
+172.31.81.32  k3s-master-3
 EOF
 ```
 
@@ -188,11 +188,11 @@ sudo mkdir -p /etc/rancher/k3s
 # Replace 1.2.3.4  with the public IP / Elastic IP of k3s-master-1
 sudo tee /etc/rancher/k3s/config.yaml <<EOF
 cluster-init: true
-node-ip: 172.31.44.176
-advertise-address: 172.31.44.176
+node-ip: 172.31.82.126
+advertise-address: 172.31.82.126
 tls-san:
-  - 172.31.44.176
-  - 44.221.214.18
+  - 172.31.82.126
+  - 3.91.141.32
   - k3s-master-1
 disable: [servicelb, traefik]
 EOF
@@ -237,7 +237,7 @@ sudo mkdir -p /etc/rancher/k3s
 
 # Example for k3s-master-2. Replace IPs and token with your values.
 sudo tee /etc/rancher/k3s/config.yaml <<EOF
-server: https://10.0.1.10:6443
+server: https://172.31.82.126:6443
 token: <token-from-master-1>
 node-ip: 10.0.1.11
 advertise-address: 10.0.1.11
