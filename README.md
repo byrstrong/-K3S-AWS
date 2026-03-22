@@ -238,7 +238,7 @@ sudo mkdir -p /etc/rancher/k3s
 # Example for k3s-master-2. Replace IPs and token with your values.
 sudo tee /etc/rancher/k3s/config.yaml <<EOF
 server: https://172.31.82.126:6443
-token: <token-from-master-1>
+token: K109800d607cf5bd42d0cc939bb9c803e6af247ed6468c24c0880d9b6aee3232ea3::server:41cd899854cd6dcdd4eca0673ff73a41
 node-ip: 10.0.1.11
 advertise-address: 10.0.1.11
 tls-san:
